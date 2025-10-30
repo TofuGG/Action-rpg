@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=4 uid="uid://c3ippp2im5qlk"]
+[gd_scene load_steps=17 format=4 uid="uid://c3ippp2im5qlk"]
 
+[ext_resource type="Script" uid="uid://cndyhw60sdd1d" path="res://scripts/game_manager.gd" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://b75wq5aer22rf" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://cvacx8es24dro" path="res://assets/sprites/world_tileset.png" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://dfhvj3nce3bt" path="res://scenes/platform.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://da3ui6hp1kysk" path="res://scenes/coin.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://i0snptmpr4vo" path="res://scenes/killzone.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cogct7kxl0msv" path="res://scenes/green_slime.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://ckacim630gm7m" path="res://scenes/music.tscn" id="8_gee14"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
 texture = ExtResource("1_yqjtg")
@@ -304,6 +306,21 @@ texture = ExtResource("1_yqjtg")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_yqjtg")
 
+[sub_resource type="Animation" id="Animation_lbhrr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(616, 136)]
+}
+
 [sub_resource type="Animation" id="Animation_lnu2h"]
 resource_name = "move"
 length = 1.5
@@ -321,21 +338,6 @@ tracks/0/keys = {
 "values": [Vector2(616, 136), Vector2(728, 136)]
 }
 
-[sub_resource type="Animation" id="Animation_lbhrr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(616, 136)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iywne"]
 _data = {
 &"RESET": SubResource("Animation_lbhrr"),
@@ -346,6 +348,10 @@ _data = {
 distance = -384.0
 
 [node name="Game" type="Node2D"]
+
+[node name="Game_Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_u5sy4")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(66, 66)
@@ -401,3 +407,9 @@ shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="GreenSlime" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(264, 112)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="music" parent="." instance=ExtResource("8_gee14")]
