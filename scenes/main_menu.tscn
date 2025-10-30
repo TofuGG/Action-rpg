@@ -1,0 +1,268 @@
+[gd_scene load_steps=15 format=3 uid="uid://baybnxaycqko3"]
+
+[ext_resource type="Script" uid="uid://blpftj86exkm5" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="FontFile" uid="uid://c6iclk616mmna" path="res://assets/fonts/PixelOperator8.ttf" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://cfhyfr1p2m3rh" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_bqqt6"]
+[ext_resource type="Script" uid="uid://qosax40qu8tv" path="res://scripts/about.gd" id="4_wu84c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+bg_color = Color(0.19215687, 0.19215687, 0.19215687, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmy8"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
+bg_color = Color(0.21325003, 0.21325003, 0.21325003, 0.9882353)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_wu84c"]
+resource_name = "jump"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-20.0, 20.0]
+}
+
+[sub_resource type="Animation" id="Animation_8ln24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [55.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtw2f"]
+_data = {
+&"RESET": SubResource("Animation_8ln24"),
+&"jump": SubResource("Animation_wu84c")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+bg_color = Color(0.19215687, 0.19215687, 0.19215687, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtw2f"]
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekxnf")
+
+[node name="main" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bqqt6")
+
+[node name="Control" type="VBoxContainer" parent="main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.25
+offset_top = -15.0
+offset_right = 161.25
+offset_bottom = 250.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 7
+
+[node name="startButton" type="Button" parent="main/Control"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+text = "Start Game"
+
+[node name="helpButton" type="Button" parent="main/Control"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+text = "Help"
+
+[node name="aboutButton" type="Button" parent="main/Control"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+text = "About"
+
+[node name="exitButton" type="Button" parent="main/Control"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+text = "Exit"
+
+[node name="Label" type="Label" parent="main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.39
+anchor_right = 0.52
+anchor_bottom = 0.39
+offset_left = -219.0
+offset_top = 55.0
+offset_right = 219.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 48
+text = "Action RPG"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="main/Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_rtw2f")
+}
+autoplay = "jump"
+
+[node name="Label2" type="Label" parent="main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.39
+anchor_right = 0.52
+anchor_bottom = 0.39
+offset_left = -217.0
+offset_top = 55.0
+offset_right = 219.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.6901961)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 48
+text = "Action RPG"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="main/Label2"]
+libraries = {
+&"": SubResource("AnimationLibrary_rtw2f")
+}
+autoplay = "jump"
+
+[node name="about" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wu84c")
+script = ExtResource("4_wu84c")
+
+[node name="Label" type="Label" parent="about"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 70.0
+offset_right = 148.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 24
+text = "About"
+
+[node name="Label2" type="Label" parent="about"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 127.0
+offset_right = 270.0
+offset_bottom = 151.0
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 16
+text = "All made by Tofu"
+
+[node name="Button" type="Button" parent="about"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -278.0
+offset_top = -133.0
+offset_right = -70.0
+offset_bottom = -70.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ln24")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+text = "Back"
+
+[connection signal="pressed" from="main/Control/startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="main/Control/helpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="main/Control/aboutButton" to="." method="_on_about_button_pressed"]
+[connection signal="pressed" from="main/Control/exitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="about/Button" to="about" method="_on_button_pressed"]

@@ -17,8 +17,8 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1
 	if anim:
-		anim.stop()          # stop animation
+		anim.stop()
 	if deadred:
-		deadred.modulate.a = 0.0  # reset alpha
-		deadred.hide()           # optional
+		deadred.modulate.a = 0.0 
+		deadred.hide()
 	get_tree().reload_current_scene()
